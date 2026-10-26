@@ -17,10 +17,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Grant Permission to Gradle
-      run: chmod +x gradlew
+    - name: Setup Gradle Automated Engine
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: 8.2
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      run: gradle assembleDebug
